@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Encyclopedia Project</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='assets/css/main.css') }}" />
+  </head>
+  <body>
+    <div class="contents">
+      <div class="landing" id="emotions" style="cursor: pointer;">
+        Encyclopedia of emotion
+      </div>
+      <br />
+      is for/made by both humans and artificial intelligence. It consists of four states of emotion.<br />
+      <a href="/joy" class="landing" id="joy" style="cursor: pointer;">Joy</a> with
+      <div class="counts" id="joy_count">{{joy}}</div>
+      corpora.<br />
+      <a href="/sadness" class="landing" id="sadness" style="cursor: pointer;">Sadness</a> with
+      <div class="counts" id="sadness_count">{{sadness}}</div>
+      corpora.<br />
+      <a href="/anger" class="landing" id="anger" style="cursor: pointer;">Anger</a> with
+      <div class="counts" id="anger_count">{{anger}}</div>
+      corpora.<br />
+      <a href="surprise" class="landing" id="surprise" style="cursor: pointer;">Surprise</a> with
+      <div class="counts" id="surprise_count">{{surprise}}</div>
+      corpora.<br />
+    </div>
+    <div class="footer">
+      <div class="footer_contents_container">
+        <div class="footer_contents" id="day">
+          Day {{days}}
+        </div>
+        <div class="footer_contents">
+          Total corpora:
+          <div class="counts" id="total_count">{{total}}</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

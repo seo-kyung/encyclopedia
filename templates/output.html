@@ -1,0 +1,11 @@
+<html>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='assets/css/output.css') }}" />
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <div id="content"><span id="sentence">{{ sentence }}</span></div>
+
+  <script>
+    setInterval(function () {
+      $("#sentence").load("/getSentence.json");
+    }, 3000);
+  </script>
+</html>

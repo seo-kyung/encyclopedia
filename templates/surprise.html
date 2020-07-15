@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>surprise</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='assets/css/emotions.css') }}" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="container">
+        <div class="header">
+          <a href="/" class="icon" id="back" style="cursor: pointer;">
+            <img src="{{ url_for('static',filename='assets/img/back_icon.png') }}" height="85" width="176" />
+          </a>
+          <div class="icon" id="delete" style="cursor: pointer;">
+            <img id="deleteImg" src="{{ url_for('static',filename='assets/img/delete_icon.png') }}" height="129" width="129" />
+          </div>
+          <div class="icon" id="write" style="cursor: pointer;">
+            <img src="{{ url_for('static',filename='assets/img/write_icon.png') }}" height="129" width="129" />
+          </div>
+        </div>
+      </div>
+      <div class="container title_container">
+        <div class="title_bar">
+          <div class="title_contents">Surprise</div>
+          <div class="title_contents counts">{{count}}</div>
+        </div>
+      </div>
+      <div class = "hiddenScroll">
+        <div class="container contents_container">
+          {%for entry in corpus%}
+            <div class="contents" data-timestamp="{{entry[2]}}">
+              <div class="corpus">{{entry[0]}}</div>
+              <div class="comments">{{entry[1]}}</div>
+            </div>
+          {%endfor%}
+        </div>
+      </div>
+    </div>
+    <div class="pop-up">
+      <div class="background"></div>
+      <div class="pop_container">
+        <div class="header">
+          <input class="icon" id="save" type="image" form="submitEntry" src="{{ url_for('static',filename='assets/img/save_icon.png') }}" border="0" alt="Submit" />
+          <a href="" class="icon" id="close"><img src="{{ url_for('static',filename='assets/img/close_icon.png') }}" height="220" width="126"/></a>
+                <!-- <div class="icon" id="save"><img src="./public/images/save_icon.png" height="235" width="174"/></div> -->
+        </div>
+        <div class="pop_contents_container">
+          <form id="submitEntry" action="{{ url_for('entry') }}" method="post">
+            <div class="pop_row" id="pop_row_1">
+              <div class="pop_contents" id="pop_contents_row_11">
+                <label>Author</label><br />
+                <input name="name" required></input>
+              </div>
+              <div class="pop_contents">
+                <label>Title</label><br />
+                <input name="title" required></input>
+              </div>
+            </div>
+            <div class="pop_row">
+              <div class="pop_contents" id="pop_contents_row_21">
+                <label>Corpus</label><br />
+                <textarea name="message" required></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="{{ url_for('static',filename='assets/js/jquery-3.5.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static',filename='assets/js/emotions.js') }}"></script>
+  <!-- <script type="text/javascript" src="./public/javascripts/bundle.js"></script> -->
+</html>
