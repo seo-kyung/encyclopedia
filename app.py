@@ -24,7 +24,7 @@ models = {}
 def root():
     session['emotion'] = ''
     args = {}
-    d0 = date(2020, 6, 18)
+    d0 = date(2020, 8, 27)
     now = date.today()
     delta = now - d0
     args["days"] = (delta.days)
