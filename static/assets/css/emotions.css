@@ -26,6 +26,10 @@
   font-weight: normal;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: Lyon;
   font-size: 0;
@@ -33,7 +37,7 @@ body {
   background: white;
   text-align: center;
   position: relative;
-  margin: 0 6vw;
+  margin: 10vw 13vw;
 }
 
 .container {
@@ -43,9 +47,19 @@ body {
   display: inline-block;
 }
 
+header {
+  flex-shrink: 0;
+}
+
 .header {
-  margin: 75px 98px;
+  margin-bottom: 75px;
   height: 80px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .icon {
@@ -82,7 +96,7 @@ img {
 
 .title_bar {
   height: 64pt;
-  margin: calc(186px - 150px) 98px;
+  margin-bottom: 75px;
   font-family: Lyon_Italic;
   font-size: 64pt;
 }
@@ -100,23 +114,28 @@ img {
 
 .hiddenScroll {
   width: 100%;
-  max-height: 1287px;
-  margin-top: calc(388px - 186px - 64pt);
+  /* max-height: 1287px;
+  margin-top: calc(388px - 186px - 64pt); */
   display: inline-block;
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /* flex: 1 0 auto; */
+  flex-grow: 1;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
 .contents_container {
-  width: calc(100% + 50px);
-  max-height: 1287px;
-  display: inline-block;
+  /* width: calc(100% + 50px); */
   overflow: scroll;
 }
 
 .contents {
-  width: 884px;
   text-align: left;
-  margin: 0 98px;
   margin-bottom: 144px;
 }
 

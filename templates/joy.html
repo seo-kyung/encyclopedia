@@ -7,25 +7,27 @@
   </head>
   <body>
     <div class="main">
-      <div class="container">
-        <div class="header">
-          <a href="/" class="icon" id="back" style="cursor: pointer;">
-            <img src="{{ url_for('static',filename='assets/img/back_icon.png') }}" height="85" width="176" />
-          </a>
-          <div class="icon" id="delete" style="cursor: pointer;">
-            <img id="deleteImg" src="{{ url_for('static',filename='assets/img/delete_icon.png') }}" height="129" width="129" />
-          </div>
-          <div class="icon" id="write" style="cursor: pointer;">
-            <img src="{{ url_for('static',filename='assets/img/write_icon.png') }}" height="129" width="129" />
+      <header>
+        <div class="container">
+          <div class="header">
+            <a href="/" class="icon" id="back" style="cursor: pointer;">
+              <img src="{{ url_for('static',filename='assets/img/back_icon.png') }}" height="85" width="176" />
+            </a>
+            <div class="icon" id="delete" style="cursor: pointer;">
+              <img id="deleteImg" src="{{ url_for('static',filename='assets/img/delete_icon.png') }}" height="129" width="129" />
+            </div>
+            <div class="icon" id="write" style="cursor: pointer;">
+              <img src="{{ url_for('static',filename='assets/img/write_icon.png') }}" height="129" width="129" />
+            </div>
           </div>
         </div>
-      </div>
-      <div class="container title_container">
-        <div class="title_bar">
-          <div class="title_contents">Joy</div>
-          <div class="title_contents counts">{{count}}</div>
+        <div class="container title_container">
+          <div class="title_bar">
+            <div class="title_contents">Joy</div>
+            <div class="title_contents counts">{{count}}</div>
+          </div>
         </div>
-      </div>
+      </header>
       <div class = "hiddenScroll">
         <div class="container contents_container">
           {%for entry in corpus%}

@@ -106,7 +106,7 @@ $(document).ready(function () {
     }
   }
 
-  var target = document.getElementsByClassName("contents_container")[0];
+  var target = document.getElementsByClassName("hiddenScroll")[0];
   var isScroll = true;
 
   var myTimer;

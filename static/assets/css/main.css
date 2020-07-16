@@ -15,24 +15,32 @@
   font-weight: normal;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   position: relative;
   font-family: Lyon;
   font-size: 0;
-
-  width: 1080px;
-  height: 1920px;
   padding: 0;
   margin: auto;
   background: white;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
 }
 
 .contents {
   font-size: 56pt;
   line-height: 71pt;
-  margin: 95px 98px;
+  /* margin: 95px 98px; */
   text-align: left;
+  flex: 1 0 auto;
+  margin: 10vw 13vw;
 }
 .landing {
   font-family: Lyon_Italic;
@@ -48,16 +56,16 @@ body {
 }
 
 .footer {
-  position: absolute;
-  right: 98px;
-  left: 98px;
-  top: calc(1920px - 140px - 64pt);
+  /* position: absolute; */
+  /* right: 98px;
+  left: 98px; */
+  /* top: calc(1920px - 140px - 64pt); */
   height: 64pt;
-  display: inline-block;
+  flex-shrink: 0;
+  margin: 10vw 13vw;
 }
 
 .footer_contents_container {
-  display: inline;
   font-size: 46pt;
   height: 46pt;
 }
@@ -77,17 +85,21 @@ body {
 }
 
 a:link {
+  text-decoration: none;
   color: black;
 }
 
 a:visited {
+  text-decoration: none;
   color: black;
 }
 
 a:hover {
+  text-decoration: none;
   color: black;
 }
 
 a:active {
+  text-decoration: none;
   color: black;
 }
