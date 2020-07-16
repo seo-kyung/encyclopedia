@@ -10,16 +10,17 @@
     setInterval(function () {
       console.log(showText);
       if (showText) {
-        $("#sentence").load("/getSentence.json");
-        document.body.style.background = "black";
-        document.getElementById("sentence").style.visibility = "visible";
-        showText = false;
+        $("#sentence").load("/getSentence.json", function () {
+          document.body.style.background = "black";
+          document.getElementById("sentence").style.visibility = "visible";
+          showText = false;
+        });
       } else {
         $.get("/getEmoji.json", function (url) {
           document.body.style.background = "black url(" + url + ") no-repeat center center/45vw fixed";
+          document.getElementById("sentence").style.visibility = "hidden";
+          showText = true;
         });
-        document.getElementById("sentence").style.visibility = "hidden";
-        showText = true;
       }
     }, 6000);
   </script>
