@@ -1,11 +1,26 @@
 <html>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='assets/css/output.css') }}" />
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-  <div id="content"><span id="sentence">{{ sentence }}</span></div>
+  <body style="background: black url({{ emoji }}) no-repeat center center/45vw fixed">
+    <div id="content"><span id="sentence">{{ sentence }}</span></div>
+  </body>
 
   <script>
+    var showText = true;
     setInterval(function () {
-      $("#sentence").load("/getSentence.json");
-    }, 3000);
+      console.log(showText);
+      if (showText) {
+        $("#sentence").load("/getSentence.json");
+        document.body.style.background = "black";
+        document.getElementById("sentence").style.visibility = "visible";
+        showText = false;
+      } else {
+        $.get("/getEmoji.json", function (url) {
+          document.body.style.background = "black url(" + url + ") no-repeat center center/45vw fixed";
+        });
+        document.getElementById("sentence").style.visibility = "hidden";
+        showText = true;
+      }
+    }, 6000);
   </script>
 </html>

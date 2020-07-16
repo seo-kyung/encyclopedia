@@ -49,7 +49,6 @@ def renderEmotion(emotion):
         try:
             entries = json.load(f)
             count = len(entries.keys())
-            # print(entries)
         except ValueError:
             count = 0
             print(f"Could not retrieve data file for {emotion}.")
@@ -81,12 +80,19 @@ def renderSurprise():
 
 @app.route('/output')
 def output():
-    return render_template('output.html', sentence="Welcome.")
+    return render_template('output.html', sentence="Welcome.", emoji=url_for('static', filename='assets/img/emoji/neutral.svg'))
 
+
+@app.route("/getEmoji.json")
+def getEmoji():
+    emotion = session['emotion']
+    if session['emotion'] in emotions:
+        return url_for('static', filename=f'assets/img/emoji/{emotion}.svg')
+    else:
+        return url_for('static', filename='assets/img/emoji/neutral.svg')
 
 @app.route("/getSentence.json")
 def getSentence():
-    print(session['emotion'])
     if session['emotion'] in models:
         sentence = models[session['emotion']].make_sentence(tries=20)
         if sentence is not None:
@@ -118,8 +124,7 @@ def entry():
         entry[now]['name'] = request.form['name']
         entry[now]['title'] = request.form['title']
         emotion = session['emotion']
-        print(emotion)
-        fname = f'../data/{emotion}.json'
+        fname = f'data/{emotion}.json'
         with open(fname, 'rt') as f:
             try:
                 entries = json.load(f)
@@ -136,7 +141,7 @@ def entry():
     elif request.method == 'DELETE':
         timestamp = request.form['timestamp']
         emotion = session['emotion']
-        fname = f'../data/{emotion}.json'
+        fname = f'data/{emotion}.json'
         with open(fname, 'rt') as f:
             try:
                 entries = json.load(f)
@@ -159,3 +164,24 @@ for emotion in emotions:
             rebuild_model(emotion, messages)
         except ValueError:
             print(f"Could not build model for {emotion}.")
+
+
+# for emotion in emotions:
+#     with open(f'data/{emotion}.txt') as f:
+#         for line in f:
+#             now = str(datetime.now())
+#             entry = {}
+#             entry[now] = {}
+#             entry[now]['message'] = line
+#             entry[now]['name'] = 'Unknown'
+#             entry[now]['title'] = 'Unknown'
+#             fname = f'data/{emotion}.json'
+#             with open(fname, 'rt') as f:
+#                 try:
+#                     entries = json.load(f)
+#                 except ValueError:
+#                     entries = {}
+#                 entries.update(entry)
+
+#             with open(fname, "wt") as f:
+#                 json.dump(entries, f, indent=2)
