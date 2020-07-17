@@ -60,7 +60,6 @@ def root():
 
 def renderEmotion(emotion):
     setCurrentEmotion(emotion)
-    print(f"Current emotion changed to: {emotion}")
     with open(os.path.join(dataDir, f"{emotion}.json"), 'rt') as f:
         try:
             entries = json.load(f)

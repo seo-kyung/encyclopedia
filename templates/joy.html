@@ -57,16 +57,16 @@
         <div class="pop_contents_container">
           <form id="submitEntry" action="{{ url_for('entry') }}" method="post">
             <div class="pop_row" id="pop_row_1">
-              <div class="pop_contents" id="pop_contents_row_11">
+              <div class="pop_contents author-container" id="pop_contents_row_11">
                 <label>Author</label><br />
                 <input name="name" required />
               </div>
-              <div class="pop_contents">
+              <div class="pop_contents title-container">
                 <label>Title</label><br />
                 <input name="title" required />
               </div>
             </div>
-            <div class="pop_row">
+            <div class="pop_row message-container">
               <div class="pop_contents" id="pop_contents_row_21">
                 <label>Corpus</label><br />
                 <textarea name="message" required></textarea>

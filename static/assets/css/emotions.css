@@ -219,9 +219,9 @@ img {
 
 .pop_contents {
   font-family: Lyon_Semibold;
-  width: 400px;
   font-size: 33pt;
   display: inline-block;
+  width: 30%;
 }
 
 #pop_row_1 {
@@ -230,6 +230,7 @@ img {
 
 #pop_contents_row_11 {
   margin-right: 95px;
+  float: left;
 }
 
 #pop_contents_row_21 {
@@ -249,11 +250,28 @@ label {
   font-family: "Open Sans", sans-serif;
   font-size: 33pt;
   float: left;
-  width: 400px;
   height: 63px;
+  width: 100%;
 }
 
 #pop_contents_row_21 > textarea {
-  width: 902px;
   height: 250px;
+  width: 100%;
+}
+
+.author-container,
+.title-container {
+  width: 45%;
+}
+
+.author-container {
+  float: left;
+}
+
+.title-container {
+  float: right;
+}
+
+.message-container {
+  width: 100%;
 }
