@@ -10,6 +10,7 @@ import json
 import signal
 from tqdm import tqdm
 from datetime import datetime, date
+from collections import OrderedDict
 import logging
 
 log = logging.getLogger('werkzeug')
@@ -135,6 +136,7 @@ def entry():
             except ValueError:
                 entries = {}
             entries.update(entry)
+            entries = dict(sorted(entries.items(), reverse=True))
 
         with open(fname, "wt") as f:
             json.dump(entries, f, indent=2)
