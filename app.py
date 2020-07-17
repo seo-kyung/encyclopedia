@@ -128,7 +128,7 @@ def entry():
         entry[now]['name'] = request.form['name']
         entry[now]['title'] = request.form['title']
         emotion = session['emotion']
-        fname = f'data/{emotion}.json'
+        fname = os.path.join(dataDir, f"{emotion}.json")
         with open(fname, 'rt') as f:
             try:
                 entries = json.load(f)
@@ -145,7 +145,7 @@ def entry():
     elif request.method == 'DELETE':
         timestamp = request.form['timestamp']
         emotion = session['emotion']
-        fname = f'data/{emotion}.json'
+        fname = os.path.join(dataDir, f"{emotion}.json")
         with open(fname, 'rt') as f:
             try:
                 entries = json.load(f)
@@ -179,7 +179,7 @@ for emotion in emotions:
 #             entry[now]['message'] = line
 #             entry[now]['name'] = 'Unknown'
 #             entry[now]['title'] = 'Unknown'
-#             fname = f'data/{emotion}.json'
+#             fname = os.path.join(dataDir, f"{emotion}.json")
 #             with open(fname, 'rt') as f:
 #                 try:
 #                     entries = json.load(f)
