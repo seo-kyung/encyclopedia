@@ -21,12 +21,23 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 dataDir = "data"
 emotions = ["joy", "sadness", "anger", "surprise"]
+emotionPath = os.path.join(dataDir, "currentEmotion")
 models = {}
+
+
+def getCurrentEmotion():
+    with open(emotionPath, "r") as f:
+        return f.read()
+
+
+def setCurrentEmotion(emotion):
+    with open(emotionPath, "w") as f:
+        f.write(emotion)
 
 
 @app.route('/')
 def root():
-    session['emotion'] = ''
+    setCurrentEmotion('')
     args = {}
     d0 = date(2020, 8, 27)
     now = date.today()
@@ -48,7 +59,8 @@ def root():
 
 
 def renderEmotion(emotion):
-    session['emotion'] = emotion
+    setCurrentEmotion(emotion)
+    print(f"Current emotion changed to: {emotion}")
     with open(os.path.join(dataDir, f"{emotion}.json"), 'rt') as f:
         try:
             entries = json.load(f)
@@ -89,8 +101,8 @@ def output():
 
 @app.route("/getEmoji.json")
 def getEmoji():
-    emotion = session['emotion']
-    if session['emotion'] in emotions:
+    emotion = getCurrentEmotion()
+    if emotion in emotions:
         return url_for('static', filename=f'assets/img/emoji/{emotion}.svg')
     else:
         return url_for('static', filename='assets/img/emoji/neutral.svg')
@@ -98,8 +110,9 @@ def getEmoji():
 
 @app.route("/getSentence.json")
 def getSentence():
-    if session['emotion'] in models:
-        sentence = models[session['emotion']].make_sentence(tries=20)
+    emotion = getCurrentEmotion()
+    if emotion in models:
+        sentence = models[emotion].make_sentence(tries=20)
         if sentence is not None:
             return (str(sentence))
         else:
@@ -128,7 +141,7 @@ def entry():
         entry[now]['message'] = request.form['message']
         entry[now]['name'] = request.form['name']
         entry[now]['title'] = request.form['title']
-        emotion = session['emotion']
+        emotion = getCurrentEmotion()
         fname = os.path.join(dataDir, f"{emotion}.json")
         with open(fname, 'rt') as f:
             try:
@@ -146,7 +159,7 @@ def entry():
         return redirect(url_for(f'render{emotion.capitalize()}'))
     elif request.method == 'DELETE':
         timestamp = request.form['timestamp']
-        emotion = session['emotion']
+        emotion = getCurrentEmotion()
         fname = os.path.join(dataDir, f"{emotion}.json")
         with open(fname, 'rt') as f:
             try:
