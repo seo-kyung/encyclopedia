@@ -8,7 +8,6 @@
   <script>
     var showText = true;
     setInterval(function () {
-      console.log(showText);
       if (showText) {
         $("#sentence").load("/getSentence.json", function () {
           document.body.style.background = "black";
