@@ -58,6 +58,11 @@ def root():
     return render_template('main.html', **args)
 
 
+@app.route('/encyclopedia')
+def renderEncyclopedia():
+    return render_template('encyclopedia.html')
+
+
 def renderEmotion(emotion):
     setCurrentEmotion(emotion)
     with open(os.path.join(dataDir, f"{emotion}.json"), 'rt') as f:

@@ -16,11 +16,11 @@
 }
 body{
     font-size: 0;
-    width: 1080px;
-    height: 1920px;
     margin: auto;
     background: white;
     text-align: left;
+    height: 100%;
+    margin: 10vw 13vw;
 }
 .head_container{
     width: 100%;
@@ -28,7 +28,6 @@ body{
     display: inline-block;
 }
 .header{
-    margin: 75px 98px;
     height: 0px;
 }
 .icon{
@@ -43,14 +42,9 @@ img{
 }
 .hiddenScroll{
     width: 100%;
-    max-height: 1587px;
-    margin: calc(186px - 130px) 98px;
     overflow: hidden;
 }
 .contents_container{
-    max-height: 1587px;
-    width: calc(100% + 50px);
-    padding-right: 246px;
     overflow: scroll;
 }
 .contents{
@@ -67,6 +61,7 @@ img{
     font-size: 42pt;
     line-height: 55pt;
     margin-top: 50px;
+    width: 100%;
 }
 .highlight{
     font-family: Lyon_Italic;

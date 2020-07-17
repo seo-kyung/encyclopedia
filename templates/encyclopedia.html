@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>encyclopedia of emotion</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='assets/css/encyclopedia.css') }}" />
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <a href="/" class="icon" id="back" style="cursor: pointer;">
+          <img src="{{ url_for('static',filename='assets/img/back_icon.png') }}" height="85" width="176" />
+        </a>
+      </div>
+    </header>
+    <div class="hiddenScroll">
+      <div class="contents_container" id="controller">
+        <div class="contents">
+          <div id="enclo">
+            <div class="highlight">Encyclopedia of emotion</div>
+            &nbsp;collects every metaphor and expression on the four states of emotion. Become a poet yourself and write your own texts here. Your
+            participation becomes a foundation for the artificial intelligence to make its own expressions and metaphors. <br /><br />
+            It will find pattern in our language, learn it and use it to make the encyclopedia together with us.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
