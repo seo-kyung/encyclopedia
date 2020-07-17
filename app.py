@@ -10,12 +10,15 @@ import json
 import signal
 from tqdm import tqdm
 from datetime import datetime, date
+import logging
+
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 dataDir = "data"
-
 emotions = ["joy", "sadness", "anger", "surprise"]
 models = {}
 
@@ -90,6 +93,7 @@ def getEmoji():
         return url_for('static', filename=f'assets/img/emoji/{emotion}.svg')
     else:
         return url_for('static', filename='assets/img/emoji/neutral.svg')
+
 
 @app.route("/getSentence.json")
 def getSentence():
